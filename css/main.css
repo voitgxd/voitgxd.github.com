@@ -637,11 +637,11 @@ body {
   width: 1200px;
 }
 .one-column .header-inner {
-  width: 550px;
+  width: 700px;
 }
 @media (min-width: 1600px) {
   .one-column .header-inner {
-    width: 700px;
+    width: 900px;
   }
 }
 .main {
@@ -652,11 +652,11 @@ body {
   width: 1200px;
 }
 .one-column .main-inner {
-  width: 550px;
+  width: 700px;
 }
 @media (min-width: 1600px) {
   .one-column .main-inner {
-    width: 700px;
+    width: 900px;
   }
 }
 .footer {
@@ -671,11 +671,11 @@ body {
   width: 1200px;
 }
 .one-column .footer-inner {
-  width: 550px;
+  width: 700px;
 }
 @media (min-width: 1600px) {
   .one-column .footer-inner {
-    width: 700px;
+    width: 900px;
   }
 }
 .headband {
@@ -961,7 +961,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fff;
+  background: #c49994;
 }
 .sidebar-nav {
   margin: 0 0 20px;
