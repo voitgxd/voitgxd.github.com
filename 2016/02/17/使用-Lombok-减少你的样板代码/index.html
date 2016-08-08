@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="Lombok,java,maven," />
 
 
 
@@ -47,15 +47,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="雁过留痕，叶落遗声">
-<meta property="og:type" content="website">
-<meta property="og:title" content="VOIT'S BLOG">
-<meta property="og:url" content="http://voitgxd.com/page/2/index.html">
+<meta name="description" content="一个强大的项目Lombok。好的项目在于提高效率，减少重复劳动，一个个优秀的项目前赴后继为之奋斗，Spring Framework的格言就是减少JEE的复杂度，EJB v3致力于减少样板代码，Lombok也是其中之一。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Lombok 减少你的样板代码">
+<meta property="og:url" content="http://voitgxd.com/2016/02/17/使用-Lombok-减少你的样板代码/index.html">
 <meta property="og:site_name" content="VOIT'S BLOG">
-<meta property="og:description" content="雁过留痕，叶落遗声">
+<meta property="og:description" content="一个强大的项目Lombok。好的项目在于提高效率，减少重复劳动，一个个优秀的项目前赴后继为之奋斗，Spring Framework的格言就是减少JEE的复杂度，EJB v3致力于减少样板代码，Lombok也是其中之一。">
+<meta property="og:updated_time" content="2016-08-08T15:29:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VOIT'S BLOG">
-<meta name="twitter:description" content="雁过留痕，叶落遗声">
+<meta name="twitter:title" content="使用 Lombok 减少你的样板代码">
+<meta name="twitter:description" content="一个强大的项目Lombok。好的项目在于提高效率，减少重复劳动，一个个优秀的项目前赴后继为之奋斗，Spring Framework的格言就是减少JEE的复杂度，EJB v3致力于减少样板代码，Lombok也是其中之一。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -77,7 +78,7 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-  <title> VOIT'S BLOG </title>
+  <title> 使用 Lombok 减少你的样板代码 | VOIT'S BLOG </title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 
@@ -109,9 +110,7 @@ var _hmt = _hmt || [];
 
 
 
-  <div class="container one-column 
-   page-home 
-">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -218,9 +217,9 @@ var _hmt = _hmt || [];
     <main id="main" class="main">
       <div class="main-inner">
         <div id="content" class="content"> 
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -236,9 +235,7 @@ var _hmt = _hmt || [];
             
             
               
-                <a class="post-title-link" href="/2015/12/17/合理使用线程池/" itemprop="url">
-                  合理使用线程池
-                </a>
+                使用 Lombok 减少你的样板代码
               
             
           </h1>
@@ -247,8 +244,8 @@ var _hmt = _hmt || [];
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-17T17:35:49+08:00" content="2015-12-17">
-              2015-12-17
+            <time itemprop="dateCreated" datetime="2016-02-17T14:55:05+08:00" content="2016-02-17">
+              2016-02-17
             </time>
           </span>
 
@@ -273,8 +270,8 @@ var _hmt = _hmt || [];
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/17/合理使用线程池/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/17/合理使用线程池/" itemprop="commentsCount"></span>
+                <a href="/2016/02/17/使用-Lombok-减少你的样板代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/17/使用-Lombok-减少你的样板代码/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,7 +280,7 @@ var _hmt = _hmt || [];
           
 		  
 		  
-		  	 <span id="/2015/12/17/合理使用线程池/"class="leancloud_visitors"  data-flag-title="合理使用线程池">
+		  	 <span id="/2016/02/17/使用-Lombok-减少你的样板代码/"class="leancloud_visitors"  data-flag-title="使用 Lombok 减少你的样板代码">
 			 &nbsp; | &nbsp;
              阅读量
             </span>
@@ -300,361 +297,101 @@ var _hmt = _hmt || [];
       
 
       
-        
-          <p>合理利用线程池的优点：<br>第一：降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。<br>第二：提高响应速度。当任务到达时，任务可以不需要的等到线程创建就能立即执行。<br>第三：提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/17/合理使用线程池/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+        <span itemprop="articleBody"><p>一个强大的项目<a href="https://projectlombok.org/" target="_blank" rel="external">Lombok</a>。<br>好的项目在于提高效率，减少重复劳动，一个个优秀的项目前赴后继为之奋斗，Spring Framework的格言就是减少JEE的复杂度，EJB v3致力于减少样板代码，Lombok也是其中之一。</p>
+<a id="more"></a>
+<p><a href="http://www.oschina.net/translate/lombok-reduces-your-boilerplate-code?cmp" target="_blank" rel="external">原文。</a></p>
+<p>接下来开始Eclipse + Maven + Lombok环境配置。</p>
+<h4 id="工程引入lombok包">工程引入lombok包</h4><p><a href="http://mvnrepository.com/artifact/org.projectlombok/lombok/1.16.6" target="_blank" rel="external">最新的lombok maven配置</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">   	<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">   	<span class="tag">&lt;<span class="title">version</span>&gt;</span>1.16.6<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="eclipse_/_myeclipse_手动安装_lombok">eclipse / myeclipse 手动安装 lombok</h4><p>使用 lombok 是需要安装的，如果不安装，IDE 则无法解析 lombok 注解。</p>
+<ol>
+<li>将 lombok.jar 复制到 myeclipse.ini / eclipse.ini 所在的文件夹目录下</li>
+<li>打开 eclipse.ini / myeclipse.ini，在最后面插入以下两行并保存：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Xbootclasspath/a:lombok-<span class="number">1.16</span><span class="number">.6</span>.jar</span><br><span class="line">-javaagent:lombok-<span class="number">1.16</span><span class="number">.6</span>.jar</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.重启 eclipse / myeclipse</p>
+<h4 id="lombok_注解">lombok 注解</h4><p>Lombok核心特征是你需要用注解来创建代码，目的是减少你要写的样板代码的数量。它为你提供如下注解，这可能会永远改变代码（不是你的生活）：</p>
+<p>@Getter 和 @Setter: 为你的字段创建getter和setter<br>@EqualsAndHashCode: 实现equals()和hashCode()<br>@ToString: 实现toString()<br>@Data: 使用上面四个注解的特征<br>@Cleanup: 关闭流<br>@Synchronized: 对象上同步<br>@SneakyThrows: 抛出异常</p>
+</span>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/12/03/Java-PK对战游戏/" itemprop="url">
-                  Java-PK对战游戏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-03T11:40:10+08:00" content="2015-12-03">
-              2015-12-03
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/Lombok/" rel="tag">#Lombok</a>
           
-
+            <a href="/tags/java/" rel="tag">#java</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/03/Java-PK对战游戏/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/03/Java-PK对战游戏/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/maven/" rel="tag">#maven</a>
           
-
-          
-		  
-		  
-		  	 <span id="/2015/12/03/Java-PK对战游戏/"class="leancloud_visitors"  data-flag-title="Java-PK对战游戏">
-			 &nbsp; | &nbsp;
-             阅读量
-            </span>
-		  
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
       
 
       
-        
-          <p><img src="http://7xnq6l.com1.z0.glb.clouddn.com/pkgame.jpg" alt="enter image description here"></p>
-<p>提到实时pvp对战，大多都是使用相关的游戏服务器框架实现的，这篇文章就来告诉你如何使用纯java开发一个支持实时pk对战的web服务器。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/03/Java-PK对战游戏/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/07/Guava-Collection/" rel="next" title="Guava-Collection">
+                <i class="fa fa-chevron-left"></i> Guava-Collection
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/08/08/I-will-be-there-for-you/" rel="prev" title="I will be there for you.">
+                I will be there for you. <i class="fa fa-chevron-right"></i>
+              </a>
             
-              
-                <a class="post-title-link" href="/2015/12/01/Atom/" itemprop="url">
-                  Atom
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-01T18:21:40+08:00" content="2015-12-01">
-              2015-12-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/编辑器/" itemprop="url" rel="index">
-                    <span itemprop="name">编辑器</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/01/Atom/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/01/Atom/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-		  
-		  
-		  	 <span id="/2015/12/01/Atom/"class="leancloud_visitors"  data-flag-title="Atom">
-			 &nbsp; | &nbsp;
-             阅读量
-            </span>
-		  
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
       
 
       
-        
-          <p><img src="http://7xnq6l.com1.z0.glb.clouddn.com/atom.gif" alt="enter image description here"></p>
-<p>atom编辑器</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/01/Atom/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <div class="ds-share flat" data-thread-key="2016/02/17/使用-Lombok-减少你的样板代码/"
+     data-title="使用 Lombok 减少你的样板代码"
+     data-content=""
+     data-url="http://voitgxd.com/2016/02/17/使用-Lombok-减少你的样板代码/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  
-  
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/11/27/Inversion-of-control/" itemprop="url">
-                  Inversion of control
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-27T18:20:53+08:00" content="2015-11-27">
-              2015-11-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/27/Inversion-of-control/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/27/Inversion-of-control/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-		  
-		  
-		  	 <span id="/2015/11/27/Inversion-of-control/"class="leancloud_visitors"  data-flag-title="Inversion of control">
-			 &nbsp; | &nbsp;
-             阅读量
-            </span>
-		  
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><img src="http://7xnq6l.com1.z0.glb.clouddn.com/ioc.jpg" alt="Inversion of control"></p>
-<p>Spring的优点有哪些？不假思索：<a href="http://baike.baidu.com/link?url=CfxqS05F9QAY1-D2Hu4_iE4sn_snM43ySW24TbFQj9k2N2cDA6_RO1xtElZkEpUsUlXcSLoFdA293e3mV6WKpq">IOC（控制反转）</a>、AOP（面向切面）。既然它是优点，而且是公认优秀框架的优点，你有没有在你的日常工作中或者思维方式中使用过？此处默哀三分钟…</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/27/Inversion-of-control/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
       
     </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
  </div>
 
         
 
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/02/17/使用-Lombok-减少你的样板代码/"
+                   data-title="使用 Lombok 减少你的样板代码" data-url="http://voitgxd.com/2016/02/17/使用-Lombok-减少你的样板代码/">
+              </div>
+            
+          </div>
         
       </div>
 
@@ -675,8 +412,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" src="http://7xnq6l.com1.z0.glb.clouddn.com/voitgxd.jpg" alt="voitgxd" itemprop="image"/>
           <p class="site-author-name" itemprop="name">voitgxd</p>
@@ -748,6 +494,17 @@ var _hmt = _hmt || [];
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#工程引入lombok包"><span class="nav-number">1.</span> <span class="nav-text">工程引入lombok包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eclipse_/_myeclipse_手动安装_lombok"><span class="nav-number">2.</span> <span class="nav-text">eclipse / myeclipse 手动安装 lombok</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lombok_注解"><span class="nav-number">3.</span> <span class="nav-text">lombok 注解</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
       
 
     </div>
@@ -835,6 +592,167 @@ var _hmt = _hmt || [];
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   <script type="text/javascript">
     $(document).ready(function () {
