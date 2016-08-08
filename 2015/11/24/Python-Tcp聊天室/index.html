@@ -1,0 +1,877 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+    <meta name="description" content="雁过留痕，叶落遗声" />
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+  <link rel="alternate" href="http://voitgxd.com/atom.xml" title="VOIT'S BLOG" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="可以实现Tcp多人聊天哦，用cmd telnet连接即可。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Tcp聊天室">
+<meta property="og:url" content="http://voitgxd.com/2015/11/24/Python-Tcp聊天室/index.html">
+<meta property="og:site_name" content="VOIT'S BLOG">
+<meta property="og:description" content="可以实现Tcp多人聊天哦，用cmd telnet连接即可。">
+<meta property="og:image" content="http://7xnq6l.com1.z0.glb.clouddn.com/powershell.png">
+<meta property="og:updated_time" content="2016-01-31T07:36:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Tcp聊天室">
+<meta name="twitter:description" content="可以实现Tcp多人聊天哦，用cmd telnet连接即可。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8fbb06de38760f18d97f63e832a5fafe";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <title> Python Tcp聊天室 | VOIT'S BLOG </title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8fbb06de38760f18d97f63e832a5fafe";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">VOIT'S BLOG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'MKqdF8sLs6pS-wRyWk9s','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python Tcp聊天室
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-24T18:24:46+08:00" content="2015-11-24">
+              2015-11-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/24/Python-Tcp聊天室/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/24/Python-Tcp聊天室/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+		  
+		  
+		  	 <span id="/2015/11/24/Python-Tcp聊天室/"class="leancloud_visitors"  data-flag-title="Python Tcp聊天室">
+			 &nbsp; | &nbsp;
+             阅读量
+            </span>
+		  
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p><img src="http://7xnq6l.com1.z0.glb.clouddn.com/powershell.png" alt="enter image description here"></p>
+<p>可以实现Tcp多人聊天哦，用cmd telnet连接即可。</p>
+<a id="more"></a>
+<p>写代码的好处之一在于能养成极简化的思维习惯，遇到一个问题，总会去想有什么方法能最快、最优的处理它；遇到一个繁琐的处理流程，第一反应就是让它自动化。最近接触了下Python，发现真的挺好用，能极大简化工作量。果真如它介绍所说，又短又强悍！当Python面世时，有人说：完成同一个任务，C语言要写1000行代码，Java只需要写100行，而Python可能只要20行。</p>
+<p>语法又简单、代码又简短，关键还能解决问题，对我来说就足够有吸引力了。不过，又有人说了：Python是解释型语言，执行的时候翻译过程非常耗时。C程序运行1秒钟，Java程序可能需要2秒，而Python程序可能就需要10秒。说的又对，那我不用它来写大型项目可以吧。写个py脚本备份备份blog，让你的重复工作自动化还是挺有趣的。</p>
+<p>最近在学习的时候，发现了个非常有意思的例子。<a href="http://blog.csdn.net/trbbadboy/article/details/7900017" target="_blank" rel="external">原文</a>。</p>
+<p>用Python写的聊天室，使用telnet登陆。仅仅只有一个py文件。原文准确来说，是用python写的一个简单的TCP服务器，只有三个类，一个用来使用socket绑定当前IP的某个端口，并不断监听来自telnet的连接请求。一个用来处理连接成功以后与客户端通信（收发数据）。另一个用来初始化配置信息。</p>
+<p>使用方法：<br>1.安装Python（前提）<br>2.在命令行环境（cmd、Windows PowerShell或者其他）下运行这个脚本</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> xxx.<span class="keyword">py</span></span><br></pre></td></tr></table></figure>
+<p>3.telnet访问（本机IP + 9113端口）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">telnet</span> 192<span class="class">.168</span><span class="class">.xx</span><span class="class">.xx</span> 9113</span><br></pre></td></tr></table></figure>
+<p>4.再开一个命令行窗口访问就可以聊天了，可以输入以下命令查看当前聊天室的用户</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">.user</span></span><br></pre></td></tr></table></figure>
+<p>完整代码：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line"># Filename: ChatRoomServer.py </span><br><span class="line"></span><br><span class="line">import threading</span><br><span class="line">import datetime</span><br><span class="line">import socket</span><br><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line"># a simple log function</span><br><span class="line">def log(lg):</span><br><span class="line">	print(lg)</span><br><span class="line"></span><br><span class="line"># Chat room server listen thread class, this class is <span class="operator"><span class="keyword">use</span> <span class="keyword">for</span> listening <span class="keyword">client</span> login</span><br><span class="line"># <span class="keyword">when</span> a <span class="keyword">client</span> request <span class="keyword">to</span> <span class="keyword">connect</span> <span class="keyword">server</span>, this <span class="keyword">class</span> will <span class="keyword">start</span> a <span class="keyword">connect</span> <span class="keyword">thread</span></span><br><span class="line"><span class="keyword">class</span> ServerListenThread(threading.<span class="keyword">Thread</span>):</span><br><span class="line">	<span class="keyword">def</span> __init__(<span class="keyword">self</span>, hostname, port, <span class="keyword">accept</span>):</span><br><span class="line">		threading.<span class="keyword">Thread</span>.__init__(<span class="keyword">self</span>)</span><br><span class="line">		<span class="keyword">self</span>.hostname = hostname</span><br><span class="line">		<span class="keyword">self</span>.port = port</span><br><span class="line">		<span class="keyword">self</span>.<span class="keyword">accept</span> = <span class="keyword">accept</span></span><br><span class="line">		<span class="keyword">self</span>.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">		<span class="keyword">self</span>.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">self</span>.sock.bind((hostname, port))</span><br><span class="line">		<span class="keyword">self</span>.sock.listen(<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">self</span>.listenstate = <span class="literal">False</span></span><br><span class="line">		<span class="keyword">log</span>(<span class="string">'ServerIp:%s ServerPort:%s  waiting for client...'</span>%<span class="keyword">self</span>.sock.getsockname())</span><br><span class="line">	<span class="keyword">def</span> run(<span class="keyword">self</span>):</span><br><span class="line">		clientid = <span class="number">1</span></span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			<span class="keyword">client</span>, cltadd = <span class="keyword">self</span>.sock.<span class="keyword">accept</span>()</span><br><span class="line">			<span class="keyword">log</span>(<span class="string">'a request from Id=%s%s'</span>%(<span class="string">'%d Address:'</span>%clientid , cltadd))</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">self</span>.<span class="keyword">accept</span>(clientid, <span class="keyword">client</span>):</span><br><span class="line">				clientid = clientid + <span class="number">1</span></span><br><span class="line">			<span class="keyword">log</span>(<span class="keyword">self</span>.listenstate)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">self</span>.listenstate:</span><br><span class="line">				<span class="keyword">log</span>(<span class="string">'server exit'</span>)</span><br><span class="line">				break</span><br><span class="line">		<span class="keyword">self</span>.sock.<span class="keyword">close</span>()</span><br><span class="line">	<span class="keyword">def</span> <span class="keyword">shutdown</span>(<span class="keyword">self</span>):</span><br><span class="line">		<span class="keyword">self</span>.listenstate = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> ServerConnectThread(threading.<span class="keyword">Thread</span>):</span><br><span class="line">	<span class="keyword">def</span> __init__(<span class="keyword">self</span>, clientid, <span class="keyword">client</span>, <span class="keyword">encoding</span>, receive, <span class="keyword">disconnect</span>):</span><br><span class="line">		threading.<span class="keyword">Thread</span>.__init__(<span class="keyword">self</span>)</span><br><span class="line">		<span class="keyword">self</span>.<span class="keyword">client</span> = <span class="keyword">client</span></span><br><span class="line">		<span class="keyword">self</span>.clientid = clientid</span><br><span class="line">		<span class="keyword">self</span>.<span class="keyword">encoding</span> = <span class="keyword">encoding</span></span><br><span class="line">		<span class="keyword">self</span>.receive = receive</span><br><span class="line">		<span class="keyword">self</span>.<span class="keyword">disconnect</span> = <span class="keyword">disconnect</span></span><br><span class="line">		<span class="keyword">self</span>.clientname = <span class="keyword">None</span></span><br><span class="line">		<span class="keyword">self</span>.inputs = <span class="keyword">self</span>.<span class="keyword">client</span>.makefile(<span class="string">'rb'</span>, <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">self</span>.outputs = <span class="keyword">self</span>.<span class="keyword">client</span>.makefile(<span class="string">'wb'</span>, <span class="number">0</span>)</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">def</span> run(<span class="keyword">self</span>):</span><br><span class="line">		<span class="keyword">self</span>.sendstring(<span class="string">'Input your name:'</span>)</span><br><span class="line">		<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">			<span class="keyword">string</span> = <span class="keyword">self</span>.readline()</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">string</span>:</span><br><span class="line">				<span class="keyword">string</span> = <span class="keyword">string</span>.lstrip()</span><br><span class="line">				<span class="keyword">if</span> <span class="keyword">len</span>(<span class="keyword">string</span>)&gt;<span class="number">0</span>:</span><br><span class="line">					<span class="keyword">self</span>.receive(<span class="keyword">self</span>, <span class="keyword">string</span>)</span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				<span class="keyword">self</span>.inputs.<span class="keyword">close</span>()</span><br><span class="line">				<span class="keyword">self</span>.outputs.<span class="keyword">close</span>()</span><br><span class="line">				break</span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">self</span>.clientname:</span><br><span class="line">			<span class="keyword">self</span>.<span class="keyword">disconnect</span>(<span class="keyword">self</span>)</span><br><span class="line">	<span class="keyword">def</span> sendstring(<span class="keyword">self</span>, <span class="keyword">string</span>):</span><br><span class="line">		#python3传递的是<span class="keyword">bytes</span>，所以要编码</span><br><span class="line">		<span class="keyword">self</span>.sendbytes(<span class="keyword">bytes</span>(<span class="keyword">string</span>, <span class="keyword">self</span>.<span class="keyword">encoding</span>))</span><br><span class="line">	<span class="keyword">def</span> sendbytes(<span class="keyword">self</span>, bts):</span><br><span class="line">		<span class="keyword">self</span>.outputs.write(bts)</span><br><span class="line">	<span class="keyword">def</span> readline(<span class="keyword">self</span>):</span><br><span class="line">		rec = <span class="keyword">self</span>.inputs.readline()</span><br><span class="line">		<span class="keyword">if</span> rec:</span><br><span class="line">			<span class="keyword">string</span> = <span class="keyword">bytes</span>.<span class="keyword">decode</span>(rec, <span class="keyword">self</span>.<span class="keyword">encoding</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">len</span>(<span class="keyword">string</span>)&gt;<span class="number">2</span>:</span><br><span class="line">				<span class="keyword">string</span> = <span class="keyword">string</span>[<span class="number">0</span>:-<span class="number">2</span>]</span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				<span class="keyword">string</span> = <span class="string">' '</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="keyword">string</span> = <span class="literal">False</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Chat room <span class="keyword">server</span> <span class="keyword">class</span>, this <span class="keyword">class</span> <span class="keyword">is</span> constitute <span class="keyword">of</span> a listen <span class="keyword">thread</span> <span class="keyword">and</span> many <span class="keyword">connect</span> <span class="keyword">thread</span></span><br><span class="line"><span class="keyword">class</span> ChatRoomServer:</span><br><span class="line">	<span class="keyword">def</span> __init__(<span class="keyword">self</span>, ip=<span class="string">'0.0.0.0'</span>, port=<span class="number">9113</span>, <span class="keyword">encoding</span>=<span class="string">'utf-8'</span>):</span><br><span class="line">		<span class="keyword">self</span>.hostname = ip</span><br><span class="line">		<span class="keyword">self</span>.<span class="keyword">encoding</span> = <span class="keyword">encoding</span></span><br><span class="line">		<span class="keyword">self</span>.port = port</span><br><span class="line">		<span class="keyword">self</span>.clients = &#123;&#125;</span><br><span class="line">		<span class="keyword">self</span>.clientnames = &#123;&#125;</span><br><span class="line">	<span class="keyword">def</span> whenconnect(<span class="keyword">self</span>, clientid, <span class="keyword">client</span>):</span><br><span class="line">		<span class="keyword">log</span>(<span class="string">'a connect with Id=%s%s'</span>%(<span class="string">'%d Address:'</span>%clientid , <span class="keyword">client</span>.getpeername()))</span><br><span class="line">		<span class="keyword">connect</span> = ServerConnectThread(clientid, <span class="keyword">client</span>, <span class="keyword">self</span>.<span class="keyword">encoding</span>, <span class="keyword">self</span>.whenreceive, <span class="keyword">self</span>.whenexit) </span><br><span class="line">		<span class="keyword">connect</span>.<span class="keyword">start</span>()</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> whenreceive(<span class="keyword">self</span>, <span class="keyword">client</span>, <span class="keyword">string</span>):</span><br><span class="line">		<span class="keyword">log</span>(<span class="string">'frome %d, receive:%s (%d)'</span>%(<span class="keyword">client</span>.clientid, <span class="keyword">string</span>, <span class="keyword">len</span>(<span class="keyword">string</span>)))</span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">client</span>.clientname:</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">string</span>[<span class="number">0</span>] == <span class="string">'.'</span>:</span><br><span class="line">				<span class="keyword">self</span>.handlecmd(<span class="keyword">client</span>, <span class="keyword">string</span>[<span class="number">1</span>:])</span><br><span class="line">			elif <span class="keyword">string</span>[<span class="number">0</span>] == <span class="string">'$'</span>:</span><br><span class="line">				<span class="keyword">self</span>.execmd(<span class="keyword">client</span>, <span class="keyword">string</span>[<span class="number">1</span>:])</span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				<span class="keyword">now</span> = datetime.datetime.<span class="keyword">now</span>()</span><br><span class="line">				sendstring = <span class="string">'%s %s\r\n  %s\r\n'</span>%(<span class="keyword">now</span>, <span class="keyword">client</span>.clientname, <span class="keyword">string</span>)</span><br><span class="line">				<span class="keyword">self</span>.sendtoall(sendstring, <span class="keyword">client</span>)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">self</span>.clientnames.__contains__(<span class="keyword">string</span>):</span><br><span class="line">				<span class="keyword">client</span>.sendstring(<span class="string">'%s is exited!!!\r\n'</span>%<span class="keyword">string</span>)</span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				<span class="keyword">client</span>.clientname = <span class="keyword">string</span></span><br><span class="line">				<span class="keyword">client</span>.sendstring(<span class="string">'Hell, %s!!!\r\n'</span>%<span class="keyword">client</span>.clientname)</span><br><span class="line">				<span class="keyword">self</span>.addclient(<span class="keyword">client</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> whenexit(<span class="keyword">self</span>, <span class="keyword">client</span>):</span><br><span class="line">		<span class="keyword">self</span>.delclient(<span class="keyword">client</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">def</span> handlecmd(<span class="keyword">self</span>, <span class="keyword">client</span>, cmd):</span><br><span class="line">		<span class="keyword">log</span>(<span class="string">'cmd: %s'</span>%cmd)</span><br><span class="line">		<span class="keyword">if</span> cmd==<span class="string">'user'</span>:</span><br><span class="line">			<span class="keyword">client</span>.sendstring(<span class="string">'User list(%d):\r\n'</span>%<span class="keyword">len</span>(<span class="keyword">self</span>.clients))</span><br><span class="line">			<span class="keyword">for</span> <span class="keyword">i</span> <span class="keyword">in</span> <span class="keyword">self</span>.clients:</span><br><span class="line">				clt = <span class="keyword">self</span>.clients[<span class="keyword">i</span>]</span><br><span class="line">				<span class="keyword">client</span>.sendstring(<span class="string">' %d\t%s\r\n'</span>%(clt.clientid, clt.clientname))</span><br><span class="line">		elif cmd == <span class="string">'quit'</span>:</span><br><span class="line">			<span class="keyword">self</span>.serverlisten.<span class="keyword">shutdown</span>()</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="keyword">client</span>.sendstring(<span class="string">'Unknow command: %s:\r\n'</span>%cmd)</span><br><span class="line">	<span class="keyword">def</span> execmd(<span class="keyword">self</span>, <span class="keyword">client</span>, cmd):</span><br><span class="line">		<span class="keyword">log</span>(<span class="string">'cmd: %s'</span>%cmd)</span><br><span class="line">		<span class="keyword">p</span> = subprocess.Popen(<span class="string">" "</span> + cmd + <span class="string">" "</span>, stdin = subprocess.<span class="keyword">PIPE</span>, stdout = subprocess.<span class="keyword">PIPE</span>, stderr = subprocess.<span class="keyword">PIPE</span>, shell = <span class="literal">True</span>)</span><br><span class="line">		<span class="keyword">p</span>.<span class="keyword">wait</span>()</span><br><span class="line">		sends = <span class="keyword">bytes</span>(<span class="keyword">p</span>.stdout.<span class="keyword">read</span>())</span><br><span class="line">		<span class="keyword">client</span>.sendbytes(sends)</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">def</span> <span class="keyword">start</span>(<span class="keyword">self</span>):</span><br><span class="line">		<span class="keyword">self</span>.serverlisten = ServerListenThread(<span class="keyword">self</span>.hostname, <span class="keyword">self</span>.port, <span class="keyword">self</span>.whenconnect)</span><br><span class="line">		<span class="keyword">self</span>.serverlisten.<span class="keyword">start</span>()</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">def</span> sendtoall(<span class="keyword">self</span>, <span class="keyword">string</span>, notfor):</span><br><span class="line">		sends = <span class="keyword">bytes</span>(<span class="keyword">string</span>, <span class="keyword">self</span>.<span class="keyword">encoding</span>)</span><br><span class="line">		<span class="keyword">for</span> <span class="keyword">i</span> <span class="keyword">in</span> <span class="keyword">self</span>.clients:</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">not</span>(notfor <span class="keyword">and</span> notfor.clientid==<span class="keyword">i</span>):</span><br><span class="line">				<span class="keyword">self</span>.clients[<span class="keyword">i</span>].sendbytes(sends)</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">def</span> addclient(<span class="keyword">self</span>, <span class="keyword">client</span>):</span><br><span class="line">		<span class="keyword">self</span>.sendtoall(<span class="string">'%s logined!!!\r\n'</span>%<span class="keyword">client</span>.clientname, <span class="keyword">client</span>)</span><br><span class="line">		<span class="keyword">self</span>.clients[<span class="keyword">client</span>.clientid] = <span class="keyword">client</span></span><br><span class="line">		<span class="keyword">self</span>.clientnames[<span class="keyword">client</span>.clientname] = <span class="keyword">client</span>.clientid</span><br><span class="line"></span><br><span class="line">	<span class="keyword">def</span> delclient(<span class="keyword">self</span>, <span class="keyword">client</span>):</span><br><span class="line">		<span class="keyword">self</span>.sendtoall(<span class="string">'%s logouted!!!\r\n'</span>%<span class="keyword">client</span>.clientname, <span class="keyword">client</span>)</span><br><span class="line">		del <span class="keyword">self</span>.clients[<span class="keyword">client</span>.clientid]</span><br><span class="line">		del <span class="keyword">self</span>.clientnames[<span class="keyword">client</span>.clientname]</span><br><span class="line"></span><br><span class="line"># <span class="keyword">start</span> a chat room <span class="keyword">server</span></span><br><span class="line"># 继承了线程的类<span class="keyword">start</span>方法即执行子类的run方法</span><br><span class="line">ChatRoomServer().<span class="keyword">start</span>()</span></span><br></pre></td></tr></table></figure>
+<p>有翻到最后的吗？</p>
+<p>翻到最后的就告诉你们我在代码里加了什么，可以试着输入以下命令：</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ls</span></span><br></pre></td></tr></table></figure>
+<p>最后，欢迎留言自己的IP + 端口哦！</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/23/Git命令备忘录/" rel="next" title="Git命令备忘录">
+                <i class="fa fa-chevron-left"></i> Git命令备忘录
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/26/devicePixelRatio/" rel="prev" title="devicePixelRatio">
+                devicePixelRatio <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/11/24/Python-Tcp聊天室/"
+     data-title="Python Tcp聊天室"
+     data-content=""
+     data-url="http://voitgxd.com/2015/11/24/Python-Tcp聊天室/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/11/24/Python-Tcp聊天室/"
+                   data-title="Python Tcp聊天室" data-url="http://voitgxd.com/2015/11/24/Python-Tcp聊天室/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://7xnq6l.com1.z0.glb.clouddn.com/voitgxd.jpg" alt="voitgxd" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">voitgxd</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">雁过留痕，叶落遗声</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">标签</span>
+              
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="http://voitgxd.com/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/voitgxd" target="_blank">
+                  <i class="fa fa-github"></i> github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/voitgxd" target="_blank">
+                  <i class="fa fa-weibo"></i> weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/2fc2dae29e56/latest_articles" target="_blank">
+                  <i class="fa fa-简书"></i> 简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">voitgxd</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"voitgxd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      isMobile() && FastClick.attach(document.body);
+
+      // Define Motion Sequence.
+      motionIntegrator
+        .add(motionMiddleWares.logo)
+        .add(motionMiddleWares.menu)
+        .add(motionMiddleWares.backToTop)
+        .add(motionMiddleWares.postList)
+        .add(motionMiddleWares.sidebar);
+
+      // Bootstrap Motion.
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+  	 <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Mxpp9ybshJ1i7wN4mYzQyfrj", "WSfWJrUgPyhBUmm4eM6Ngtkt");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = $(document.getElementById(url)).text() + '-0';
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = $(document.getElementById(url)).text() + '-' + object.get('count');
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("count");
+				counter.save(null, {
+					success: function(counter) {
+						var content = $(document.getElementById(url)).text() + '-' + counter.get('count');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("count", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('count')="+newcounter.get('count'));
+						var content = $(document.getElementById(url)).text() + '-' + newcounter.get('count');
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+  
+</body>
+</html>
